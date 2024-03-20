@@ -11,17 +11,10 @@ class Account:
         self.__address = address
         self.__credit_cards = []
 
-    def update_subscription(subscrption: Subscription):
-        pass
-
     def update_account():
         pass
 
 
 class Admin:
-    def createCategory(category: Category):
-        pass
-
-    def blockCustomer(customer: Customer):
-        pass
-
+    def __init__(self, account: Account) -> None:
+        self.__account = account

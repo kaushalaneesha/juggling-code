@@ -2,7 +2,7 @@
 
 import datetime
 
-from LLD.BookMyShow.BMSService import CinemaHall
+from BMSService import CinemaHall
 
 
 class Movie:

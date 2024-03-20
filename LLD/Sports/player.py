@@ -12,7 +12,6 @@ class Player:
         self.__name = name
         self.__number_of_matches = number_of_matches
         self.__total_runs = total_runs
-        # self.__matches = matches
 
 class Team:
     def __init__(self, country, players: Player) -> None:

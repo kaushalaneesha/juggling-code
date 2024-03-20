@@ -7,9 +7,9 @@
 
 from abc import ABC
 from ast import List
-from LLD.BookMyShow.booking import Booking
-from LLD.BookMyShow.constants import AccountStatus
-from LLD.BookMyShow.movie import Movie
+from booking import Booking
+from constants import AccountStatus
+from movie import Movie
 
 
 class Account:

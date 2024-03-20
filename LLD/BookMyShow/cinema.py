@@ -1,6 +1,6 @@
 from ast import List
-from LLD.BookMyShow.constants import Address, SeatType, Status
-from LLD.BookMyShow.movie import Show
+from constants import Address, SeatType, Status
+from movie import Show
 
 class CinemaHall:
 

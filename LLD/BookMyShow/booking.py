@@ -1,9 +1,9 @@
 from ast import List
 import datetime
 
-from LLD.BookMyShow.cinema import Audi, Seat
-from LLD.BookMyShow.constants import SeatType, Status
-from LLD.BookMyShow.movie import Movie, Show
+from cinema import Audi, Seat
+from constants import SeatType, Status
+from movie import Movie, Show
 
 class Payment:
     def __init__(self, amount, transaction_id, payment_status):
