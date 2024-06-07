@@ -26,6 +26,13 @@ class Group:
     def notify(self, message):
         for sub in self.subscribers:
             sub.notify(message)
+
+class ClassThatChanges:
+    def __init__(self, group) -> None:
+        self._group = group
+
+    def somethingChanged(self):
+        self._group.notify("Something changed guys!")
     
 grp = Group()
 user1 = User(1)
@@ -36,3 +43,7 @@ grp.subscribe(User(3))
 grp.notify("new message")
 grp.unsubscribe(user1)
 grp.notify("another message")
+
+print("--------------------")
+cc = ClassThatChanges(grp)
+cc.somethingChanged()
