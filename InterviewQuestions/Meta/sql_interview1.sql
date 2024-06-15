@@ -30,7 +30,7 @@ GROUP BY
 -- Write a query to find customer who has more than 1 boook and also min , max tranaction_date greater than 3. 
 SELECT 
     customer_id
-  , COUNT(distinct transaction_id)  unique_books_read
+  , COUNT(distinct book_id)  unique_books_read -- Assuming sales has a book id as well. 
   , min(tranaction_date) oldest_transaction
   , max(transaction_date) newest_transaction
 FROM 
