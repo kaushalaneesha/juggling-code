@@ -37,3 +37,61 @@ FROM
 ORDER BY 
     date
 ;
+
+-- Question 3: Find Employees with Salaries Above Average in Their Department
+-- Table: employees
+
+-- emp_id	emp_name	department	salary
+-- 1	John	HR	60000
+-- 2	Alice	HR	65000
+-- 3	Bob	IT	70000
+-- 4	Carol	IT	80000
+-- 5	Dave	IT	75000
+-- Question: Write a query to find employees who have a salary above the average salary of their department.
+
+WITH avg_salary AS (
+    SELECT 
+        department,
+        AVG(salary) AS asalary
+    FROM 
+        Employees
+    GROUP BY 
+        department
+)
+SELECT 
+    e.emp_id,
+    e.emp_name, 
+    e.department,
+    e.salary
+FROM 
+    employees e
+    INNER JOIN avg_salary a
+    ON e.department = a.department
+WHERE   
+    e.salary > a.asalary
+;
+
+-- Question 4: Find Top 3 Salaries in Each Department
+-- Table: employees
+
+-- emp_id	emp_name	department	salary
+-- 1	John	HR	60000
+-- 2	Alice	HR	65000
+-- 3	Bob	IT	70000
+-- 4	Carol	IT	80000
+-- 5	Dave	IT	75000
+-- 6	Eve	HR	62000
+-- 7	Frank	IT	78000
+-- Question: Write a query to find the top 3 highest salaries in each department.
+
+SELECT 
+    emp_id, 
+    emp_name,
+    department,
+    salary, 
+    dense_rank() OVER(partition by department order by salary desc) rank
+FROM 
+    employee
+WHERE
+    rank <= 3
+;

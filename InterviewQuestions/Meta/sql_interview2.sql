@@ -9,14 +9,19 @@ WHERE salary != (SELECT max(salary) from employee)
 GROUP BY salary
 
 -- Using row number 
+WITH RankedSalaries AS (
+    SELECT 
+        salary, 
+        DENSE_RANK() OVER (ORDER BY salary DESC) AS rank
+    FROM 
+        employee
+)
 SELECT 
-    salary 
-  , DENSE_RANK OVER (order by salary desc) 
+    salary
 FROM 
-    employee
+    RankedSalaries
 WHERE
-    row_number = 2
-;
+    rank = 2;
 
 -- Find customers making maximum purchases
 
