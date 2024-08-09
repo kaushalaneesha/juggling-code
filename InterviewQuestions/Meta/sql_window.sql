@@ -84,14 +84,23 @@ WHERE
 -- 7	Frank	IT	78000
 -- Question: Write a query to find the top 3 highest salaries in each department.
 
+WITH RankedEmployees AS (
+    SELECT 
+        emp_id, 
+        emp_name,
+        department,
+        salary, 
+        DENSE_RANK() OVER(PARTITION BY department ORDER BY salary DESC) AS rank
+    FROM 
+        employee
+)
 SELECT 
     emp_id, 
     emp_name,
     department,
     salary, 
-    dense_rank() OVER(partition by department order by salary desc) rank
+    rank
 FROM 
-    employee
+    RankedEmployees
 WHERE
-    rank <= 3
-;
+    rank <= 3;
